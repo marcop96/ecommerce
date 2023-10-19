@@ -9,7 +9,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 export default function Footer() {
   return (
-    <footer className="bg-secondary text-white h-48">
+    <footer className="bg-slate-800 text-white h-48 p-5">
       <Container>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6} md={3}>

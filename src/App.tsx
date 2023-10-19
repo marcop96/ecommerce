@@ -15,17 +15,16 @@ export default function App() {
   }, []);
 
   return (
-    <div className="bg-slate-900 h-full w-full">
-      <header>
+    <div className="bg-slate-900 h-full min-w-max">
+      <nav>
         <NavBar />
-      </header>
-      <h1 className="text-red-500">asdof</h1>
-      <main className="bg-primary h-screen ">
-        <div className="grid grid-cols-3 gap-4 ">
+      </nav>
+      <main className="  ">
+        <div className="grid grid-cols-1 gap-2  md:grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
           {products.map((product: Product) => (
             <ProductCard key={product.id} product={product} />
           ))}
-        </div>{" "}
+        </div>
       </main>
 
       <footer>
