@@ -18,10 +18,12 @@ export default function Footer() {
             </Typography>
             <Link href="#" style={{ color: "white" }}>
               About Us
-            </Link>
+            </Link>{" "}
+            <br />
             <Link href="#" style={{ color: "white" }}>
               Contact Us
-            </Link>
+            </Link>{" "}
+            <br />
             <Link href="#" style={{ color: "white" }}>
               FAQ
             </Link>
@@ -33,9 +35,11 @@ export default function Footer() {
             <Link href="#" style={{ color: "white" }}>
               Customer Support
             </Link>
+            <br />
             <Link href="#" style={{ color: "white" }}>
               Terms & Conditions
             </Link>
+            <br />
             <Link href="#" style={{ color: "white" }}>
               Privacy Policy
             </Link>
