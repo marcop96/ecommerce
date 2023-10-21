@@ -17,7 +17,11 @@ export default function App() {
       .catch((error) => console.error("Error fetching data:", error))
       .finally(() => setLoading(false));
   }, []);
-
+  //TODO add animation when adding to cart to give user feedback
+  //TODO add my Cart section
+  //TODO add validation cart
+  //TODO remove from cart
+  //TODO add more than one to cart? maybe with an input that lets you select quantity before adding, and passing that as prop to add the correct qty
   const addToCartHandler = (product: Product) => {
     console.log(product);
 

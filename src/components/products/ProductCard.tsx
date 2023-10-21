@@ -18,7 +18,15 @@ export default function ProductCard(props: ProductCardProps) {
     addToCart(product);
   }
   return (
-    <Card sx={{ width: 345, height: "100%" }}>
+    <Card
+      sx={{
+        width: 345,
+        height: "100%",
+        backgroundColor: "  #fed7aa",
+        boxShadow: 3,
+        ":hover": { boxShadow: 10 },
+      }}
+    >
       <CardMedia
         component="img"
         alt={product.title}
