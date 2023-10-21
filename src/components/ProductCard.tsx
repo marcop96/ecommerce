@@ -1,24 +1,48 @@
 import { Product } from "../types";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 
-export default function ProductCard({ product }: { product: Product }) {
+interface ProductCardProps {
+  product: Product;
+}
+
+export default function ProductCard(props: ProductCardProps) {
+  const { product } = props; // Destructure the product prop
+
   return (
-    <div className="border-2 flex flex-col items-center justify-center h-76 w-72 p-4">
-      <h2 className="text-white text-lg font-semibold mb-2">{product.title}</h2>
-      <img
-        src={product.image}
+    <Card sx={{ width: 345, height: "100%" }}>
+      <CardMedia
+        component="img"
         alt={product.title}
-        className="w-24 h-24 object-scale-down mb-2"
+        height="140"
+        image={product.image}
+        sx={{ height: 140, objectFit: "contain" }}
       />
-      <p className="text-white text-sm">${product.price}</p>
-
-      <button className="text-white border-2 border-radius-2 p-2">
-        buy now
-      </button>
-      <div className="flex flex-row align-center">
-        <button className="text-white p-2">-</button>
-        <input type="text" placeholder="0" className="w-3 h-1/2" />
-        <button className="text-white p-2">+</button>
-      </div>
-    </div>
+      <CardContent>
+        <Typography
+          gutterBottom
+          variant="h5"
+          component="div"
+          className="h-10 overflow-scroll"
+        >
+          {product.title}
+        </Typography>
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          className="h-20 overflow-scroll"
+        >
+          {product.description}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small">Add To Cart</Button>
+        <Button size="small">Buy Now</Button>
+      </CardActions>
+    </Card>
   );
 }

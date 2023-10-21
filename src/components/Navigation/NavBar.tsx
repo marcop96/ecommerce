@@ -39,11 +39,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar
-      position="static"
-      sx={{ backgroundColor: "#252627" }}
-      className="sticky top 0"
-    >
+    <AppBar position="static" sx={{ backgroundColor: "#252627" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AddShoppingCartOutlinedIcon
