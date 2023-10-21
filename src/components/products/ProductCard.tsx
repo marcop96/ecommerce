@@ -8,11 +8,15 @@ import Typography from "@mui/material/Typography";
 
 interface ProductCardProps {
   product: Product;
+  addToCart: (product: Product) => void;
 }
 
 export default function ProductCard(props: ProductCardProps) {
-  const { product } = props; // Destructure the product prop
+  const { product, addToCart } = props; // Destructure the product prop
 
+  function addToCartHandler(product: Product) {
+    addToCart(product);
+  }
   return (
     <Card sx={{ width: 345, height: "100%" }}>
       <CardMedia
@@ -43,7 +47,11 @@ export default function ProductCard(props: ProductCardProps) {
         </Typography>
       </CardContent>
       <CardActions className="flex flex-row justify-end">
-        <Button size="small" className="self-end">
+        <Button
+          size="small"
+          className="self-end"
+          onClick={() => addToCartHandler(product)}
+        >
           Add To Cart
         </Button>
         <Button size="small" className="justify-end">

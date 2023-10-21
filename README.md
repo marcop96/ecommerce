@@ -1,27 +1,26 @@
-# React + TypeScript + Vite
+# E-Commerce Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is an e-commerce website project that allows users to browse and purchase products from a wide range of categories.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Product Listings**: Browse a variety of products with detailed information.
+- **Product Details**: View product details, including images, descriptions, and prices.
+- **Wishlist**: Add products to your wishlist
+- **Add to Cart**: Add products to your shopping cart for later purchase.
+- **Checkout**: Complete your purchase by reviewing the items in your cart and making a payment.
+- **User Authentication**: Register and log in to your account to track orders and manage your profile.
+- **Responsive Design**: The website is responsive and works well on various devices and screen sizes.
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- React
+- Tailwind CSS (or your preferred CSS framework)
 
-- Configure the top-level `parserOptions` property like this:
+## Installation
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+1. Clone the repository:
+
+```bash
+git clone https://github.com/your-username/e-commerce-website.git
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list

@@ -5,8 +5,9 @@ import ProductCard from "./components/products/ProductCard";
 import { Product } from "./types";
 export default function App() {
   const [products, setProducts] = useState([]);
-  // const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     // Use useEffect to make the API call
     setLoading(true);
@@ -17,6 +18,12 @@ export default function App() {
       .finally(() => setLoading(false));
   }, []);
 
+  const addToCartHandler = (product: Product) => {
+    console.log(product);
+
+    setCart((prevCart) => [...prevCart, product]);
+  };
+
   return (
     <div className=" h-full min-w-max">
       <nav className="bg-orange-700">
@@ -26,7 +33,11 @@ export default function App() {
         <div className="grid grid-cols-1 gap-2  md:grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
           {loading && <p className="flex ">Loading...</p>}
           {products.map((product: Product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard
+              key={product.id}
+              product={product}
+              addToCart={addToCartHandler}
+            />
           ))}
         </div>
       </main>
