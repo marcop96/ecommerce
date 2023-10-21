@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Footer from "./components/Navigation/Footer";
 import NavBar from "./components/Navigation/NavBar";
-import ProductCard from "./components/ProductCard";
+import ProductCard from "./components/products/ProductCard";
 import { Product } from "./types";
 export default function App() {
   const [products, setProducts] = useState([]);

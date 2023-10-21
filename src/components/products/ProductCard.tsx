@@ -1,4 +1,4 @@
-import { Product } from "../types";
+import { Product } from "../../types";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -22,7 +22,7 @@ export default function ProductCard(props: ProductCardProps) {
         image={product.image}
         sx={{ height: 140, objectFit: "contain" }}
       />
-      <CardContent>
+      <CardContent className="flex flex-col">
         <Typography
           gutterBottom
           variant="h5"
@@ -38,10 +38,17 @@ export default function ProductCard(props: ProductCardProps) {
         >
           {product.description}
         </Typography>
+        <Typography variant="h5" color="text-secondary" className="self-center">
+          $ {product.price}
+        </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">Add To Cart</Button>
-        <Button size="small">Buy Now</Button>
+      <CardActions className="flex flex-row justify-end">
+        <Button size="small" className="self-end">
+          Add To Cart
+        </Button>
+        <Button size="small" className="justify-end">
+          Buy Now
+        </Button>
       </CardActions>
     </Card>
   );
