@@ -12,7 +12,7 @@ interface ProductCardProps {
 }
 
 export default function ProductCard(props: ProductCardProps) {
-  const { product, addToCart } = props; // Destructure the product prop
+  const { product, addToCart } = props;
 
   function addToCartHandler(product: Product) {
     addToCart(product);
@@ -20,6 +20,7 @@ export default function ProductCard(props: ProductCardProps) {
   return (
     <Card
       sx={{
+        padding: 2,
         width: 345,
         height: "100%",
         backgroundColor: "  #fed7aa",

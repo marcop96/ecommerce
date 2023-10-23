@@ -3,6 +3,8 @@ import Footer from "./components/Navigation/Footer";
 import NavBar from "./components/Navigation/NavBar";
 import ProductCard from "./components/products/ProductCard";
 import { Product } from "./types";
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage";
 export default function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState<Product[]>([]);
