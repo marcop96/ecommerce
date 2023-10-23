@@ -17,7 +17,6 @@ export default function ProductCard(props: ProductCardProps) {
   const dispatch = useDispatch();
 
   function addToCartHandler(product: Product) {
-    // console.log(event);
     dispatch(addToCart(product));
   }
 

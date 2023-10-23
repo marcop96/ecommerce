@@ -17,7 +17,18 @@ const cartSlice = createSlice({
     },
 
     removeFromCart: (state, action: PayloadAction<Product>) => {
-      return state.filter((item) => item.id !== action.payload.id);
+      const productToRemove = action.payload;
+      if (productToRemove.quantity > 1) {
+        return state.map((item) =>
+          item.id === productToRemove.id
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
+        );
+      } else if (productToRemove.quantity === 1) {
+        return state.filter((item) => item.id !== productToRemove.id);
+      } else {
+        return state;
+      }
     },
   },
 });
