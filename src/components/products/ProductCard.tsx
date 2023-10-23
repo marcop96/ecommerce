@@ -5,18 +5,22 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/cartSlice";
 
 interface ProductCardProps {
   product: Product;
-  addToCart: (product: Product) => void;
 }
 
 export default function ProductCard(props: ProductCardProps) {
-  const { product, addToCart } = props;
+  const { product } = props;
+  const dispatch = useDispatch();
 
   function addToCartHandler(product: Product) {
-    addToCart(product);
+    // console.log(event);
+    dispatch(addToCart(product));
   }
+
   return (
     <Card
       sx={{

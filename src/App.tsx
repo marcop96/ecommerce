@@ -3,11 +3,12 @@ import Footer from "./components/Navigation/Footer";
 import NavBar from "./components/Navigation/NavBar";
 import ProductCard from "./components/products/ProductCard";
 import { Product } from "./types";
-import { Route, Routes } from "react-router-dom";
-import HomePage from "./pages/HomePage";
+import Cart from "./components/products/Cart";
+// import { Route, Routes } from "react-router-dom";
+// import HomePage from "./pages/HomePage";
+
 export default function App() {
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -24,11 +25,11 @@ export default function App() {
   //TODO add validation cart
   //TODO remove from cart
   //TODO add more than one to cart? maybe with an input that lets you select quantity before adding, and passing that as prop to add the correct qty
-  const addToCartHandler = (product: Product) => {
-    console.log(product);
+  // const addToCartHandler = (product: Product) => {
+  //   console.log(product);
 
-    setCart((prevCart) => [...prevCart, product]);
-  };
+  //   setCart((prevCart) => [...prevCart, product]);
+  // };
 
   return (
     <div className=" h-full min-w-max">
@@ -39,11 +40,7 @@ export default function App() {
         <div className="grid grid-cols-1 gap-2  md:grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
           {loading && <p className="flex ">Loading...</p>}
           {products.map((product: Product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              addToCart={addToCartHandler}
-            />
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
       </main>
@@ -51,6 +48,7 @@ export default function App() {
       <footer>
         <Footer />
       </footer>
+      <Cart />
     </div>
   );
 }
