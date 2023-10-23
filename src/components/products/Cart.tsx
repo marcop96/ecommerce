@@ -16,6 +16,8 @@ const Cart = () => {
         {cartItems.map((item: Product, index: number) => (
           <li key={index}>
             ${item.price} {item.title}
+            <br />
+            {item.quantity}
             <button onClick={() => removeFromCartHandler(item)}>x</button>
           </li>
         ))}

@@ -14,7 +14,7 @@ export default function App() {
   useEffect(() => {
     // Use useEffect to make the API call
     setLoading(true);
-    fetch("https://fakestoreapi.com/products")
+    fetch("https://fakestoreapi.com/products?limit=2")
       .then((res) => res.json())
       .then((json) => setProducts(json))
       .catch((error) => console.error("Error fetching data:", error))
@@ -25,17 +25,12 @@ export default function App() {
   //TODO add validation cart
   //TODO remove from cart
   //TODO add more than one to cart? maybe with an input that lets you select quantity before adding, and passing that as prop to add the correct qty
-  // const addToCartHandler = (product: Product) => {
-  //   console.log(product);
-
-  //   setCart((prevCart) => [...prevCart, product]);
-  // };
 
   return (
     <div className=" h-full min-w-max">
-      <nav className="bg-orange-700">
+      {/* <nav className="bg-orange-700">
         <NavBar />
-      </nav>
+      </nav> */}
       <main className=" bg-orange-100">
         <div className="grid grid-cols-1 gap-2  md:grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
           {loading && <p className="flex ">Loading...</p>}
@@ -44,11 +39,11 @@ export default function App() {
           ))}
         </div>
       </main>
+      <Cart />
 
       <footer>
         <Footer />
       </footer>
-      <Cart />
     </div>
   );
 }
