@@ -3,18 +3,18 @@ import Footer from "./components/Navigation/Footer";
 import NavBar from "./components/Navigation/NavBar";
 import ProductCard from "./components/products/ProductCard";
 import { Product } from "./types";
-import Cart from "./components/products/Cart";
+import CartComponent from "./components/products/CartComponent";
 // import { Route, Routes } from "react-router-dom";
 // import HomePage from "./pages/HomePage";
 
 export default function App() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-
+  const API_URL = "https://fakestoreapi.com/products";
   useEffect(() => {
     // Use useEffect to make the API call
     setLoading(true);
-    fetch("https://fakestoreapi.com/products?limit=2")
+    fetch(API_URL)
       .then((res) => res.json())
       .then((json) => setProducts(json))
       .catch((error) => console.error("Error fetching data:", error))
@@ -22,15 +22,13 @@ export default function App() {
   }, []);
   //TODO add animation when adding to cart to give user feedback
   //TODO add my Cart section
-  //TODO add validation cart
-  //TODO remove from cart
   //TODO add more than one to cart? maybe with an input that lets you select quantity before adding, and passing that as prop to add the correct qty
 
   return (
     <div className=" h-full min-w-max">
-      {/* <nav className="bg-orange-700">
+      <nav className="bg-orange-700">
         <NavBar />
-      </nav> */}
+      </nav>
       <main className=" bg-orange-100">
         <div className="grid grid-cols-1 gap-2  md:grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
           {loading && <p className="flex ">Loading...</p>}
@@ -39,7 +37,7 @@ export default function App() {
           ))}
         </div>
       </main>
-      <Cart />
+      <CartComponent />
 
       <footer>
         <Footer />
