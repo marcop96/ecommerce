@@ -4,6 +4,7 @@ import NavBar from "./components/Navigation/NavBar";
 import ProductCard from "./components/products/ProductCard";
 import { Product } from "./types";
 import CartComponent from "./components/products/CartComponent";
+import CartDrawer from "./components/products/CartDrawer";
 // import { Route, Routes } from "react-router-dom";
 // import HomePage from "./pages/HomePage";
 
@@ -38,7 +39,7 @@ export default function App() {
         </div>
       </main>
       <CartComponent />
-
+      <CartDrawer />
       <footer>
         <Footer />
       </footer>

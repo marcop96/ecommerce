@@ -1,10 +1,12 @@
 import Badge from "@mui/material/Badge";
 import MailIcon from "@mui/icons-material/Mail";
-// import { useDispatch, useSelector } from "react-redux";
-// import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+
 export default function CartBadge() {
+  const totalCartItems = useSelector((state: RootState) => state.cartCount);
   return (
-    <Badge badgeContent={2} color="primary">
+    <Badge badgeContent={totalCartItems} color="primary">
       <MailIcon color="action" />
     </Badge>
   );

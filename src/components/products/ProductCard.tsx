@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/cartSlice";
+import { increment } from "../../redux/cartCountSlice";
 
 interface ProductCardProps {
   product: Product;
@@ -18,6 +19,7 @@ export default function ProductCard(props: ProductCardProps) {
 
   function addToCartHandler(product: Product) {
     dispatch(addToCart(product));
+    dispatch(increment());
   }
 
   return (
