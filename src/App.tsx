@@ -4,7 +4,7 @@ import NavBar from "./components/Navigation/NavBar/NavBar";
 import ProductCard from "./components/products/ProductCard";
 import { Product } from "./types";
 import CartComponent from "./components/products/Cart/CartComponent";
-import CartDrawer from "./components/products/CartDrawer";
+import CartDrawer from "./components/products/Cart/CartDrawer";
 // import { Route, Routes } from "react-router-dom";
 // import HomePage from "./pages/HomePage";
 
@@ -30,6 +30,8 @@ export default function App() {
       <nav className="bg-orange-700">
         <NavBar />
       </nav>
+      <CartComponent />
+      <CartDrawer />
       <main className=" bg-orange-100">
         <div className="grid grid-cols-1 gap-2  md:grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
           {loading && <p className="flex ">Loading...</p>}
@@ -38,8 +40,6 @@ export default function App() {
           ))}
         </div>
       </main>
-      <CartComponent />
-      <CartDrawer />
       <footer>
         <Footer />
       </footer>

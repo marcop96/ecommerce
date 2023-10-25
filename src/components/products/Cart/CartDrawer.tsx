@@ -3,17 +3,16 @@ import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
 import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
-
+import { useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
+import { Product } from "../../../types";
 type Anchor = "right";
 
 export default function TemporaryDrawer() {
+  const cartItems = useSelector((state: RootState) => state.cart);
   const [state, setState] = React.useState({
     right: false,
   });
@@ -34,42 +33,36 @@ export default function TemporaryDrawer() {
 
   const list = (anchor: Anchor) => (
     <Box
-      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
+      sx={{ width: 600 }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
+      <List className="flex flex-col">
+        {cartItems.map((item: Product, index: number) => (
+          <button className="hover:bg-orange-100">
+            <li key={index}>
+              <img src={item.image} width="40px" height="40px" />
+              <p className="px-4">
+                {item.quantity}x - {item.title}
+              </p>
+            </li>
+          </button>
         ))}
+
+        <ListItem disablePadding>
+          <ListItemButton>
+            <ListItemText primary={"asd"} />
+          </ListItemButton>
+        </ListItem>
       </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      <hr />
     </Box>
   );
 
   return (
     <div>
-      {(["left", "right", "top", "bottom"] as const).map((anchor) => (
+      {(["right"] as const).map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
           <Drawer
