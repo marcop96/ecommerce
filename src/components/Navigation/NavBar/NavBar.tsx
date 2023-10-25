@@ -1,17 +1,14 @@
 import { useState } from "react";
 import CartBadge from "./CartBadge";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
 const Navbar = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!isMobileMenuOpen);
   };
-  const totalCartItems = useSelector((state: RootState) => state.cartCount);
 
   return (
-    <nav className=" p-4">
+    <nav className=" p-4 sticky">
       <div className="container mx-auto flex justify-between items-center">
         <a href="#" className="text-white text-2xl font-semibold">
           Marco
@@ -23,9 +20,7 @@ const Navbar = () => {
           <a href="#" className="text-white hover:text-gray-300">
             Products
           </a>
-          <a href="#" className="text-white hover:text-gray-300">
-            Cart
-          </a>
+
           <button className="text-white hover:text-gray-300">
             <CartBadge />
           </button>
@@ -61,9 +56,10 @@ const Navbar = () => {
           <a href="#" className="block text-white mb-2">
             Products
           </a>
-          <a href="#" className="block text-white mb-2">
-            Contact
-          </a>
+
+          <button className="text-white hover:text-gray-300">
+            <CartBadge />
+          </button>
         </div>
       )}
     </nav>

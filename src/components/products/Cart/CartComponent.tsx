@@ -1,8 +1,8 @@
-import { Product } from "../../types";
+import { Product } from "../../../types";
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromCart } from "../../redux/cartSlice";
-import { RootState } from "../../redux/store";
-import { decrement } from "../../redux/cartCountSlice";
+import { removeFromCart } from "../../../redux/cartSlice";
+import { RootState } from "../../../redux/store";
+import { decrement } from "../../../redux/cartCountSlice";
 // import { useEffect, useState } from "react";
 
 const Cart = () => {

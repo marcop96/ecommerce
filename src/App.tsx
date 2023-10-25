@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import Footer from "./components/Navigation/Footer";
-import NavBar from "./components/Navigation/NavBar";
+import NavBar from "./components/Navigation/NavBar/NavBar";
 import ProductCard from "./components/products/ProductCard";
 import { Product } from "./types";
-import CartComponent from "./components/products/CartComponent";
+import CartComponent from "./components/products/Cart/CartComponent";
 import CartDrawer from "./components/products/CartDrawer";
 // import { Route, Routes } from "react-router-dom";
 // import HomePage from "./pages/HomePage";
