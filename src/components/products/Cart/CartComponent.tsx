@@ -1,13 +1,15 @@
 import { Product } from "../../../types";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { removeFromCart } from "../../../redux/cartSlice";
-import { RootState } from "../../../redux/store";
 import { decrement } from "../../../redux/cartCountSlice";
 
-const Cart = () => {
+interface CartProps {
+  item: Product;
+  index: number;
+}
+
+function Cart({ item, index }: CartProps) {
   const dispatch = useDispatch();
-  const cartItems = useSelector((state: RootState) => state.cart);
-  const totalCartItems = useSelector((state: RootState) => state.cartCount);
 
   const removeFromCartHandler = (product: Product) => {
     dispatch(removeFromCart(product));
@@ -15,23 +17,26 @@ const Cart = () => {
   };
 
   return (
-    <div>
-      <h2>Cart.component</h2>
-      <p>Total items {totalCartItems}</p>
-      <ul>
-        {cartItems.map((item: Product, index: number) => (
-          <li key={index}>
-            ${item.price} {item.title}
-            <br />
-            {item.quantity}
-            <button className="m-3" onClick={() => removeFromCartHandler(item)}>
-              x
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <li key={index} className="w-full flex flex-row my-2">
+      <div className="flex items-center w-full hover:bg-orange-600 hover:rounded-lg">
+        <img
+          src={item.image}
+          width="40px"
+          height="40px"
+          className="justify-start mx-3"
+        />
+        <p className="px-4 w-full">
+          {item.quantity}x - {item.title}
+        </p>
+      </div>
+      <button
+        onClick={() => removeFromCartHandler(item)}
+        className="border-2 border-black hover:bg-orange-600"
+      >
+        Remove
+      </button>
+    </li>
   );
-};
+}
 
 export default Cart;

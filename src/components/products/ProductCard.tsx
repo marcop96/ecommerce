@@ -68,9 +68,6 @@ export default function ProductCard(props: ProductCardProps) {
         >
           Add To Cart
         </Button>
-        <Button size="small" className="justify-end">
-          Buy Now
-        </Button>
       </CardActions>
     </Card>
   );

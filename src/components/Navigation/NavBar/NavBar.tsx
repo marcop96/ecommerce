@@ -10,7 +10,7 @@ const Navbar = () => {
 
   return (
     <nav className=" p-4 sticky">
-      <div className="container mx-auto flex justify-between items-center">
+      <div className="container mx-auto flex justify-between items-center ">
         <a href="#" className="text-white text-2xl font-semibold">
           Marco
         </a>

@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import List from "@mui/material/List";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
-import ItemsInCart from "./ItemsInCart";
+import CartComponent from "./CartComponent";
 import CartBadge from "../Cart/CartBadge";
 type Anchor = "right";
 
@@ -34,11 +34,15 @@ export default function CartDrawer() {
       // onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List className="items-center bg-orange-300 ">
-        {cartItems.map((item, index) => (
-          <ItemsInCart item={item} index={index} key={index} />
-        ))}
-      </List>
+      {cartCount === 0 ? (
+        <h2 className="text-2xl"> Your Cart is empty</h2>
+      ) : (
+        <List className="items-center bg-orange-300 ">
+          {cartItems.map((item, index) => (
+            <CartComponent item={item} index={index} />
+          ))}
+        </List>
+      )}
     </Box>
   );
   const cartCount = useSelector((state: RootState) => state.cartCount);
@@ -59,6 +63,7 @@ export default function CartDrawer() {
             <div className="bg-orange-600 h-16 flex items-center justify-center">
               <h2 className="self-center">My cart: {cartCount}</h2>
             </div>
+
             {list(anchor)}
           </Drawer>
         </React.Fragment>
