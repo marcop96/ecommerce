@@ -31,7 +31,7 @@ export default function CartDrawer() {
     <Box
       className="flex flex-col h-full bg-orange-300 items-center  p-4"
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
+      // onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List className="items-center bg-orange-300 ">

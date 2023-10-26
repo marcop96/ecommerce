@@ -20,8 +20,6 @@ export default function App() {
       .finally(() => setLoading(false));
   }, []);
   //TODO add animation when adding to cart to give user feedback
-  //TODO add my Cart section
-  //TODO add more than one to cart? maybe with an input that lets you select quantity before adding, and passing that as prop to add the correct qty
 
   return (
     <div className=" h-full min-w-max">
