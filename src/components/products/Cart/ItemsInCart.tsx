@@ -2,7 +2,7 @@
 import { useDispatch } from "react-redux";
 import { removeFromCart } from "../../../redux/cartSlice";
 import { Product } from "../../../types";
-
+import { decrement } from "../../../redux/cartCountSlice";
 interface ItemsInCartProps {
   item: Product;
   index: number;
@@ -13,6 +13,7 @@ export default function ItemsInCart({ item, index }: ItemsInCartProps) {
 
   const handleRemoveFromCart = () => {
     dispatch(removeFromCart(item));
+    dispatch(decrement());
   };
 
   return (
