@@ -10,40 +10,23 @@ const Navbar = () => {
 
   return (
     <nav className=" p-4 sticky">
-      <div className="container mx-auto flex justify-between items-center ">
-        <a href="#" className="text-white text-2xl font-semibold">
+      <div className="container mx-auto flex justify-start items-center ">
+        <a href="#" className="text-white text-2xl font-semibold p-3">
           Marco
         </a>
-        <div className="hidden md:flex space-x-4">
-          <a href="#" className="text-white hover:text-gray-300 ">
-            Home
-          </a>
-          <a href="#" className="text-white hover:text-gray-300">
-            Products
-          </a>
+        <a href="#" className="text-white hover:text-gray-300 p-3 ">
+          Home
+        </a>
+        <a href="#" className="text-white hover:text-gray-300 p-3">
+          Products
+        </a>
 
-          <button className="text-white hover:text-gray-300">
-            <CartDrawer />
-          </button>
-        </div>
-        <div className="flex md:hidden">
-          <button onClick={toggleMobileMenu} className="text-white">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </button>
-        </div>
+        <button className="text-white hover:text-gray-300 p-3">
+          <CartDrawer />
+        </button>
+      </div>
+      <div className="flex md:hidden">
+        <button onClick={toggleMobileMenu} className="text-white"></button>
       </div>
       {/* Mobile Menu (Hidden by default) */}
       {isMobileMenuOpen && (

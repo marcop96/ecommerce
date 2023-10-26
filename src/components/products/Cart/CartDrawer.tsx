@@ -12,7 +12,7 @@ type Anchor = "right";
 export default function CartDrawer() {
   const cartItems = useSelector((state: RootState) => state.cart);
   const [state, setState] = useState({ right: false });
-
+  const EMPTY_CART_MESSAGE = "Your cart is empty";
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>
     (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -28,14 +28,12 @@ export default function CartDrawer() {
     };
 
   const list = (anchor: Anchor) => (
-    <Box
+    <div
       className="flex flex-col h-full bg-orange-300 items-center  p-4"
-      role="presentation"
-      // onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
       {cartCount === 0 ? (
-        <h2 className="text-2xl"> Your Cart is empty</h2>
+        <h2 className="text-2xl"> {EMPTY_CART_MESSAGE}</h2>
       ) : (
         <List className="items-center bg-orange-300 ">
           {cartItems.map((item, index) => (
@@ -43,7 +41,7 @@ export default function CartDrawer() {
           ))}
         </List>
       )}
-    </Box>
+    </div>
   );
   const cartCount = useSelector((state: RootState) => state.cartCount);
 
