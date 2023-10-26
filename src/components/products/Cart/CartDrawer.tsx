@@ -1,21 +1,17 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
-import { Product } from "../../../types";
+import ItemsInCart from "./ItemsInCart";
+import CartBadge from "../Cart/CartBadge";
 type Anchor = "right";
 
-export default function TemporaryDrawer() {
+export default function CartDrawer() {
   const cartItems = useSelector((state: RootState) => state.cart);
-  const [state, setState] = React.useState({
-    right: false,
-  });
+  const [state, setState] = useState({ right: false });
 
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>
@@ -33,43 +29,36 @@ export default function TemporaryDrawer() {
 
   const list = (anchor: Anchor) => (
     <Box
-      sx={{ width: 600 }}
+      className="flex flex-col h-full bg-orange-300 items-center  p-4"
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List className="flex flex-col">
-        {cartItems.map((item: Product, index: number) => (
-          <button className="hover:bg-orange-100">
-            <li key={index}>
-              <img src={item.image} width="40px" height="40px" />
-              <p className="px-4">
-                {item.quantity}x - {item.title}
-              </p>
-            </li>
-          </button>
+      <List className="items-center bg-orange-300 ">
+        {cartItems.map((item, index) => (
+          <ItemsInCart item={item} index={index} key={index} />
         ))}
-
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemText primary={"asd"} />
-          </ListItemButton>
-        </ListItem>
       </List>
-      <hr />
     </Box>
   );
+  const cartCount = useSelector((state: RootState) => state.cartCount);
 
   return (
-    <div>
+    <div id="drawer-activation-button">
       {(["right"] as const).map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+          <Button onClick={toggleDrawer(anchor, true)}>
+            <CartBadge />
+          </Button>
           <Drawer
             anchor={anchor}
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}
+            PaperProps={{ style: { width: "600px" } }}
           >
+            <div className="bg-orange-600 h-16 flex items-center justify-center">
+              <h2 className="self-center">My cart: {cartCount}</h2>
+            </div>
             {list(anchor)}
           </Drawer>
         </React.Fragment>

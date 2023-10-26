@@ -1,5 +1,6 @@
 import { useState } from "react";
-import CartBadge from "./CartBadge";
+import CartBadge from "../../products/Cart/CartBadge";
+import CartDrawer from "../../products/Cart/CartDrawer";
 const Navbar = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -22,7 +23,7 @@ const Navbar = () => {
           </a>
 
           <button className="text-white hover:text-gray-300">
-            <CartBadge />
+            <CartDrawer />
           </button>
         </div>
         <div className="flex md:hidden">
