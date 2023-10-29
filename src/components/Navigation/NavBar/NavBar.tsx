@@ -11,15 +11,15 @@ const Navbar = () => {
   };
 
   return (
-    <nav className=" p-4 sticky bg-orange-700">
-      <div className="container mx-auto flex justify-start items-center ">
-        <a href="#" className="text-white text-2xl font-semibold p-3">
+    <nav className=" sticky bg-orange-700 p-3">
+      <div className="container mx-auto flex justify-start items-center space-x-2 ">
+        <a href="#" className="text-white text-xl font-semibold">
           Marco
         </a>
-        <a href="#" className="text-white hover:text-gray-300 p-3 ">
+        <a href="#" className="text-white hover:text-gray-300 ">
           Home
         </a>
-        <a href="#" className="text-white hover:text-gray-300 p-3">
+        <a href="#" className="text-white hover:text-gray-300 ">
           Products
         </a>
         {!isOpen && (
