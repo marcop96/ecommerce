@@ -19,7 +19,6 @@ export default function App() {
       .catch((error) => console.error("Error fetching data:", error))
       .finally(() => setLoading(false));
   }, []);
-  //TODO add animation when adding to cart to give user feedback
 
   return (
     <div className=" h-full min-w-max">

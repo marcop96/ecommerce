@@ -1,9 +1,10 @@
 import { useState } from "react";
-import CartBadge from "../../products/Cart/CartBadge";
 import CartDrawer from "../../products/Cart/CartDrawer";
+import { openDrawer } from "../../../redux/drawerSlice";
+import { useDispatch } from "react-redux";
 const Navbar = () => {
+  const dispatch = useDispatch();
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -21,9 +22,13 @@ const Navbar = () => {
           Products
         </a>
 
-        <button className="text-white hover:text-gray-300 p-3">
-          <CartDrawer />
+        <button
+          className="text-white hover:text-gray-300"
+          onClick={() => dispatch(openDrawer())}
+        >
+          abrirdrawer
         </button>
+        <CartDrawer />
       </div>
       <div className="flex md:hidden">
         <button onClick={toggleMobileMenu} className="text-white"></button>
@@ -41,8 +46,11 @@ const Navbar = () => {
             Products
           </a>
 
-          <button className="text-white hover:text-gray-300">
-            <CartBadge />
+          <button
+            className="text-white hover:text-gray-300"
+            onClick={() => dispatch(openDrawer())}
+          >
+            boton
           </button>
         </div>
       )}
