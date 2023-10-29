@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import Footer from "./components/Navigation/Footer";
-import NavBar from "./components/Navigation/NavBar/NavBar";
+import Footer from "./components/Layout/Footer";
+import NavBar from "./components/Layout/NavBar";
 import ProductCard from "./components/products/ProductCard";
 import { Product } from "./types";
 import CartDrawer from "./components/products/Cart/CartDrawer";
@@ -20,17 +20,23 @@ export default function App() {
       .catch((error) => console.error("Error fetching data:", error))
       .finally(() => setLoading(false));
   }, []);
+  //TODO carrito icono abajo a la derecha fixed para abrir el drawer
 
   return (
     <div className=" w-full h-full relative">
       <NavBar />
       <main className=" bg-orange-100 p-4">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
-          {loading && <p className="flex ">Loading...</p>}
-          {products.map((product: Product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+        {loading ? (
+          <div className="h-screen">
+            <p className=" ">Loading...</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
+            {products.map((product: Product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        )}
       </main>
 
       <Footer />
