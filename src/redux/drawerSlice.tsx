@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const drawerSlice = createSlice({
   name: "drawer",
-  initialState: { isOpen: true },
+  initialState: { isOpen: false },
   reducers: {
     closeDrawer: (state) => {
       state.isOpen = false;

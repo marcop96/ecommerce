@@ -69,14 +69,15 @@
 // }
 import { useDispatch, useSelector } from "react-redux";
 import { closeDrawer } from "../../../redux/drawerSlice";
+import { RootState } from "../../../redux/store";
 const Drawer = () => {
   const dispatch = useDispatch();
-  const isOpen = useSelector((state) => state.drawer.isOpen);
+  const isOpen = useSelector((state: RootState) => state.drawer.isOpen);
 
   return (
     <div
-      className={`fixed right-0 top-0 h-full w-64 bg-white transform transition-transform ${
-        isOpen ? "translate-x-0" : "translate-x-full"
+      className={`fixed right-0 top-0 h-full lg:w-64  w-screen z-2 bg-white transform transition-transform ${
+        isOpen ? "translate-x-0" : "translate-x-full "
       }`}
     >
       {/* Drawer content goes here */}

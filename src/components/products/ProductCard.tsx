@@ -3,7 +3,6 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/cartSlice";
@@ -61,13 +60,9 @@ export default function ProductCard(props: ProductCardProps) {
         </Typography>
       </CardContent>
       <CardActions className="flex flex-row justify-end">
-        <Button
-          size="small"
-          className="self-end"
-          onClick={() => addToCartHandler(product)}
-        >
+        <button className="self-end" onClick={() => addToCartHandler(product)}>
           Add To Cart
-        </Button>
+        </button>
       </CardActions>
     </Card>
   );
