@@ -18,23 +18,23 @@ export default function ProductCard(props: ProductCardProps) {
   }
 
   return (
-    <article className=" flex flex-col justify-between items-center p-2 w-86 h-full bg-[#fed7aa] shadow hover:shadow-lg rounded-lg  hover:scale-[1.01] transition-transform duration-75">
-      <figure className="w-full  h-36 ">
+    <article className=" w-86 flex h-full flex-col items-center justify-between rounded-lg bg-[#fed7aa] p-2 shadow transition-transform  duration-75 hover:scale-[1.01] hover:shadow-lg">
+      <figure className="h-36  w-full ">
         <img
-          className="object-contain h-full w-full "
+          className="h-full w-full object-contain "
           src={product.image}
           alt={product.title}
         />
       </figure>
       <h3 className="text-xl  ">{product.title}</h3>
-      <p className="text-xs h-20  overflow-scroll max-w-xs">
+      <p className="h-20 max-w-xs  overflow-scroll text-xs">
         {product.description}
       </p>
       <h4 color="text-secondary" className="self-center">
         $ {product.price}
       </h4>
       <button
-        className="mx-auto uppercase shadow-md p-2  rounded-lg border border-orange-500 bg-orange-300 hover:bg-orange-500 transition-colors duration-75"
+        className="mx-auto rounded-lg border border-orange-500  bg-orange-300 p-2 uppercase shadow-md transition-colors duration-75 hover:bg-orange-500"
         onClick={() => addToCartHandler(product)}
       >
         add to cart{" "}

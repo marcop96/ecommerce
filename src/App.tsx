@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "./redux/store";
 import Footer from "./components/Layout/Footer";
 import NavBar from "./components/Layout/NavBar";
 import ProductCard from "./components/products/ProductCard";
 import { Product } from "./types";
 import CartDrawer from "./components/products/Cart/CartDrawer";
-import OpenDrawerIcon from "./components/products/Cart/OpenDrawerIcon";
+import FloatingCartCTA from "./components/products/Cart/FloatingCartCTA";
 // import { Route, Routes } from "react-router-dom";
 // import HomePage from "./pages/HomePage";
 
@@ -24,24 +26,26 @@ export default function App() {
   //TODO carrito icono abajo a la derecha fixed para abrir el drawer
 
   return (
-    <div className=" w-full h-full relative">
+    <div className=" h-full w-full ">
       <NavBar />
       <main className=" bg-orange-100 p-4">
-        <OpenDrawerIcon />
         {loading ? (
           <div className="h-screen">
             <p className=" ">Loading...</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
             {products.map((product: Product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
         )}
       </main>
-
       <Footer />
+      //TODO when drawers open hide icon
+      {useSelector((state: RootState) => !state.drawer.isOpen) && (
+        <FloatingCartCTA />
+      )}
       <CartDrawer />
     </div>
   );

@@ -76,13 +76,13 @@ const Drawer = () => {
 
   return (
     <div
-      className={`fixed right-0 top-0 h-full lg:w-64  w-screen z-2 bg-white transform transition-transform ${
+      className={`z-2 fixed right-0 top-0 h-full  w-screen transform bg-white transition-transform lg:w-64 ${
         isOpen ? "translate-x-0" : "translate-x-full "
       }`}
     >
       {/* Drawer content goes here */}
       <button
-        className="absolute top-2 right-2"
+        className="absolute right-2 top-2"
         onClick={() => dispatch(closeDrawer())}
       >
         Close

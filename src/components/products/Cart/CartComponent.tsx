@@ -17,15 +17,15 @@ function Cart({ item, index }: CartProps) {
   };
 
   return (
-    <li key={index} className="w-full flex flex-row my-2">
-      <div className="flex items-center w-full hover:bg-orange-600 hover:rounded-lg">
+    <li key={index} className="my-2 flex w-full flex-row">
+      <div className="flex w-full items-center hover:rounded-lg hover:bg-orange-600">
         <img
           src={item.image}
           width="40px"
           height="40px"
-          className="justify-start mx-3"
+          className="mx-3 justify-start"
         />
-        <p className="px-4 w-full">
+        <p className="w-full px-4">
           {item.quantity}x - {item.title}
         </p>
       </div>
