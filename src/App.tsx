@@ -4,6 +4,7 @@ import NavBar from "./components/Layout/NavBar";
 import ProductCard from "./components/products/ProductCard";
 import { Product } from "./types";
 import CartDrawer from "./components/products/Cart/CartDrawer";
+import OpenDrawerIcon from "./components/products/Cart/OpenDrawerIcon";
 // import { Route, Routes } from "react-router-dom";
 // import HomePage from "./pages/HomePage";
 
@@ -26,6 +27,7 @@ export default function App() {
     <div className=" w-full h-full relative">
       <NavBar />
       <main className=" bg-orange-100 p-4">
+        <OpenDrawerIcon />
         {loading ? (
           <div className="h-screen">
             <p className=" ">Loading...</p>
