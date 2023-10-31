@@ -2,10 +2,7 @@
 // import Drawer from "@mui/material/Drawer";
 // import List from "@mui/material/List";
 // import { useSelector } from "react-redux";
-// import { RootState } from "../../../redux/store";
 // import CartComponent from "./CartComponent";
-// import CartBadge from "../Cart/CartBadge";
-// type Anchor = "right";
 
 // export default function CartDrawer() {
 //   const cartItems = useSelector((state: RootState) => state.cart);
@@ -70,24 +67,46 @@
 import { useDispatch, useSelector } from "react-redux";
 import { closeDrawer } from "../../../redux/drawerSlice";
 import { RootState } from "../../../redux/store";
+import CartComponent from "./CartComponent";
+
 const Drawer = () => {
+  const cartCount = useSelector((state: RootState) => state.cartCount);
+
+  const cartItems = useSelector((state: RootState) => state.cart);
   const dispatch = useDispatch();
   const isOpen = useSelector((state: RootState) => state.drawer.isOpen);
-
+  const EMPTY_CART_MESSAGE = "Your Cart is empty ";
   return (
-    <div
-      className={`z-2 fixed right-0 top-0 h-full  w-screen transform bg-white transition-transform lg:w-64 ${
-        isOpen ? "translate-x-0" : "translate-x-full "
-      }`}
-    >
-      {/* Drawer content goes here */}
-      <button
-        className="absolute right-2 top-2"
-        onClick={() => dispatch(closeDrawer())}
+    <>
+      <div
+        className={`z-2 fixed right-0 top-0 h-full w-screen  transform  rounded-lg  border-4 border-orange-700 bg-orange-200 shadow-lg transition-transform lg:w-2/4 ${
+          isOpen ? "translate-x-0" : "translate-x-full "
+        }`}
       >
-        Close
-      </button>
-    </div>
+        <div className="flex h-16 items-center justify-center bg-orange-600">
+          <h2 className="self-center">My cart: {cartCount}</h2>
+        </div>
+
+        {/* Drawer content goes here */}
+        <button
+          className="absolute right-2 top-2"
+          onClick={() => dispatch(closeDrawer())}
+        >
+          X
+        </button>
+        <div className="flex h-full flex-col items-center bg-orange-300  p-4">
+          {cartCount === 0 ? (
+            <h2 className="text-2xl"> {EMPTY_CART_MESSAGE}</h2>
+          ) : (
+            <li className="items-center bg-orange-300 ">
+              {cartItems.map((item, index) => (
+                <CartComponent item={item} index={index} />
+              ))}
+            </li>
+          )}
+        </div>
+      </div>
+    </>
   );
 };
 export default Drawer;
