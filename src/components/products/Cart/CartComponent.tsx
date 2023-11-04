@@ -26,14 +26,14 @@ function Cart({ item, index }: CartProps) {
           className="mx-3 justify-start"
         />
         <p className="w-full px-4">
-          {item.quantity}x - {item.title}
+          {item.quantity}x - {item.title} - ${item.price}
         </p>
       </div>
       <button
         onClick={() => removeFromCartHandler(item)}
         className="border-2 border-black hover:bg-orange-600"
       >
-        Remove
+        Remove 
       </button>
     </li>
   );

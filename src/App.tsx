@@ -23,7 +23,9 @@ export default function App() {
       .catch((error) => console.error("Error fetching data:", error))
       .finally(() => setLoading(false));
   }, []);
-  //TODO carrito icono abajo a la derecha fixed para abrir el drawer
+  //TODO FIX FOOTER
+  //TODO COLORS ON HOVER FLOATINGCART
+  //TODO ADD TOTAL PRICE AND CHECKOUT STUFF ON DRAWER
 
   return (
     <div className=" h-full w-full ">

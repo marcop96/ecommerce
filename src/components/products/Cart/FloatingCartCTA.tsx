@@ -6,8 +6,9 @@ export default function FloatingCartCTA() {
   const cartCount = useSelector((state: RootState) => state.cartCount);
   const dispatch = useDispatch();
   return (
-    <div className="fixed bottom-14 right-14 z-40 ">
-      <div className="fixed bottom-10 right-3 z-50 rounded-full bg-black p-1 text-white">
+    //todo fix hover invert colors
+    <div className="fixed bottom-14 right-14 z-40">
+      <div className="fixed bottom-11 right-3 z-50 rounded-full bg-black px-2 text-white ">
         {cartCount}
       </div>
       <ShoppingBasketOutlinedIcon

@@ -30,8 +30,14 @@ const cartSlice = createSlice({
         return state;
       }
     },
+    calculateTotalPrice: (state,action:PayloadAction<Product>) =>{
+      //TODO calculate the total price from the products, so it can be displauyed in the cart
+
+      console.log(state)
+      console.log(action)
+    }
   },
 });
 
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const { addToCart, removeFromCart,calculateTotalPrice } = cartSlice.actions;
 export default cartSlice.reducer;
