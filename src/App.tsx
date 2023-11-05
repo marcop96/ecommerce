@@ -7,7 +7,7 @@ import ProductCard from "./components/products/ProductCard";
 import { Product } from "./types";
 import CartDrawer from "./components/products/Cart/CartDrawer";
 import FloatingCartCTA from "./components/products/Cart/FloatingCartCTA";
-import AddToCartModal from './components/utilities/AddToCartModal'
+import AddToCartModal from './components/utilities/AddToCartNotification'
 // import { Route, Routes } from "react-router-dom";
 // import HomePage from "./pages/HomePage";
 
@@ -44,7 +44,6 @@ export default function App() {
         )}
       </main>
       <Footer />
-      <AddToCartModal/>
       //TODO when drawers open hide icon
       {useSelector((state: RootState) => !state.drawer.isOpen) && (
         <FloatingCartCTA />
