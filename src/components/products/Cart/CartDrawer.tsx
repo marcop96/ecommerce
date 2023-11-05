@@ -19,6 +19,7 @@ const Drawer = () => {
   //checks if click was made outside of the drawer, and closes it
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent) => {
+      //drawer ref = open  drawer div
       if (drawerRef.current && !drawerRef.current.contains(e.target as Node)) {
 
         dispatch(closeDrawer());
@@ -34,7 +35,8 @@ const Drawer = () => {
 
     // Function to calculate total price
     const calculateTotalPrice = () => {
-      return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+      const totalPrice = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+      return totalPrice.toFixed(2)
     };
   
 
@@ -81,8 +83,11 @@ const Drawer = () => {
             </ul>
           )}
       </div>
-        <div id='price' className="absolute bottom-0 w-full h-1/5 bg-orange-300 p-4 ">
-          Total price {calculateTotalPrice()} </div>
+      <div className="flex flex-col  h-1/5 w-full bg-orange-300">
+        <h3 id='price' className=" text-3xl  p-4">
+          Total price  ${calculateTotalPrice()} </h3>
+          <button className="rounded-full bg-orange-500 w-fit self-center justify-self-center p-3 hover:bg-orange-600">Checkout</button>
+      </div>
         </div>
     </>
   );

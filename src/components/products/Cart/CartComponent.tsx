@@ -9,6 +9,7 @@ interface CartProps {
 }
 
 function Cart({ item, index }: CartProps) {
+
   const dispatch = useDispatch();
 
   const removeFromCartHandler = (product: Product) => {
