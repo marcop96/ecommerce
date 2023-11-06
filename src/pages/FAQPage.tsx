@@ -1,7 +1,6 @@
 
     
     export default function FAQPage  ()  {
-      // Your FAQ content
       const faqData = [
         {
           question: "What are the shipping options?",
@@ -11,16 +10,17 @@
           question: "Can I return items if I'm not satisfied?",
           answer: "Yes, we have a 30-day return policy. If you're not satisfied with your purchase, you can return the item within 30 days for a full refund."
         },
+        
       ];
     
       return (
         <div className="bg-orange-200 py-12">
-          <div className="container mx-auto">
+          <div className="container mx-auto ">
             <h1 className="text-3xl font-bold mb-6 text-center">Frequently Asked Questions</h1>
             
-            <div className="grid grid-cols-1 gap-6">
+            <div className="grid grid-cols-1 gap-6 ">
               {faqData.map((item, index) => (
-                <div key={index} className="bg-white p-4 rounded-lg">
+                <div key={index} className="bg-orange-300 p-4 rounded-lg">
                   <h2 className="text-xl font-semibold">{item.question}</h2>
                   <p className="mt-2">{item.answer}</p>
                 </div>

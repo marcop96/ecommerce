@@ -13,7 +13,7 @@ import ProductsPage from "./pages/ProductsPage";
 
 export default function App() {
 
-
+//!FIX mobile drawer checkout button not visible
 
   return (
     <div className=" h-full w-full ">

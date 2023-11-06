@@ -10,14 +10,14 @@ export default function NavMenuMobile() {
 
       {isOpen && (
         <>
-          <a href="#" className="mb-2 block text-white">
+          <a href="/" className="mb-2 block text-white">
             Home
           </a>
-          <a href="#" className="mb-2 block text-white">
+          <a href="products" className="mb-2 block text-white">
             Shop
           </a>
-          <a href="#" className="mb-2 block text-white">
-            Products
+          <a href="FAQ" className="mb-2 block text-white">
+            FAQ
           </a>
         </>
       )}
