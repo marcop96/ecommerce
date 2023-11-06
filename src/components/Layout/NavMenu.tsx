@@ -7,10 +7,10 @@ export default function NavMenu() {
       >
         Marco
       </a>
-      <a href="#" className="mx-3 text-white hover:text-gray-300">
+      <a href="products" className="mx-3 text-white hover:text-gray-300">
         Home
       </a>
-      <a href="#" className="mx-3 text-white hover:text-gray-300">
+      <a href="FAQ" className="mx-3 text-white hover:text-gray-300">
         Products
       </a>
     </nav>

@@ -1,53 +1,36 @@
-import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "./redux/store";
 import Footer from "./components/Layout/Footer";
 import NavBar from "./components/Layout/NavBar";
-import ProductCard from "./components/products/ProductCard";
-import { Product } from "./types";
+// import ProductCard from "./components/products/ProductCard";
+// import { Product } from "./types";
 import CartDrawer from "./components/products/Cart/CartDrawer";
 import FloatingCartCTA from "./components/products/Cart/FloatingCartCTA";
-import AddToCartModal from './components/utilities/AddToCartNotification'
-// import { Route, Routes } from "react-router-dom";
-// import HomePage from "./pages/HomePage";
+ import { Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import FAQPage from "./pages/FAQPage";
+import ProductsPage from "./pages/ProductsPage";
 
 export default function App() {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const API_URL = "https://fakestoreapi.com/products";
-  useEffect(() => {
-    // Use useEffect to make the API call
-    setLoading(true);
-    fetch(API_URL)
-      .then((res) => res.json())
-      .then((json) => setProducts(json))
-      .catch((error) => console.error("Error fetching data:", error))
-      .finally(() => setLoading(false));
-  }, []);
-  //TODO FIX FOOTER
+
 
 
   return (
     <div className=" h-full w-full ">
       <NavBar />
       <main className=" bg-orange-100 p-4">
-        {loading ? (
-          <div className="h-screen">
-            <p className=" ">Loading...</p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
-            {products.map((product: Product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        )}
+        <Routes>
+          <Route path='/' element={<HomePage/>}/>
+          <Route path="/faq" element={<FAQPage/>}/>
+          <Route path='/products' element={<ProductsPage/>}/>
+        </Routes>
+
       </main>
-      <Footer />
       {useSelector((state: RootState) => !state.drawer.isOpen) && (
         <FloatingCartCTA />
       )}
       <CartDrawer />
+      <Footer />
     </div>
     
   );
