@@ -44,7 +44,6 @@ export default function App() {
         )}
       </main>
       <Footer />
-      //TODO when drawers open hide icon
       {useSelector((state: RootState) => !state.drawer.isOpen) && (
         <FloatingCartCTA />
       )}

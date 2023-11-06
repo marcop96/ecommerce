@@ -32,13 +32,11 @@ const AddToCartNotification = ({ showModal, setShowModal }:AddToCartNotidficatio
   }, [showModal]);
 
   return (
-    <div className="absolute bottom-4 left-4">
-      {showNotification && (
-        <div className="bg-orange-500 text-white rounded-lg p-4 shadow-md">
-          <p>Added to Cart!</p>
-        </div>
-      )}
-    </div>
+    <div
+    className={`bg-orange-500 text-white rounded-lg  fixed  bottom-4 left-4 p-4 shadow-md transition-all duration-500 transform ${
+      showNotification ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+    }`}
+  >Added to cart!</div>
   );
 };
 
