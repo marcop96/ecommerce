@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import {useDispatch, useSelector} from 'react-redux'
 import { closeDrawer } from "../../../redux/drawerSlice";
 import { RootState } from "../../../redux/store";
 import CartComponent from "./CartComponent";
