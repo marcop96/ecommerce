@@ -52,7 +52,7 @@ const Drawer = () => {
       {/* Drawer */}
       <div
         ref={drawerRef}
-        className={`fixed right-0 top-0 z-50 h-full w-screen transform rounded-lg border-4 border-orange-700 bg-orange-200 transition-transform lg:w-2/4 ${
+        className={`fixed right-0 top-0 z-50 h-full  w-screen overflow-scroll transform rounded-lg border-4 border-orange-700 bg-orange-200 transition-transform lg:w-2/4 ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -69,7 +69,7 @@ const Drawer = () => {
         </button>
 
         {/* Drawer content */}
-        <div className="flex h-[505px] flex-col items-center bg-orange-300 p-4">
+        <div className="flex min-h-full flex-col items-center bg-orange-300 p-4">
           {cartCount === 0 ? (
             <>
               <h2 className="text-2xl">{EMPTY_CART_TEXT.title}</h2>
@@ -83,10 +83,10 @@ const Drawer = () => {
             </ul>
           )}
       </div>
-      <div className="flex flex-col  h-1/5 w-full bg-orange-300">
-        <h3 id='price' className=" text-3xl  p-4">
+      <div className="flex flex-col   bottom-4 h-1/4 w-full bg-orange-300">
+        <h3 id='price' className=" text-3xl  p-4  self-center ">
           Total price  ${calculateTotalPrice()} </h3>
-          <button className="rounded-full bg-orange-500 w-fit self-center justify-self-center p-3 hover:bg-orange-600">Checkout</button>
+          <button className="rounded-full bg-orange-500 w-fit self-center p-3 hover:bg-orange-600">Checkout</button>
       </div>
         </div>
     </>

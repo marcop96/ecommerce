@@ -1,4 +1,4 @@
-import DisplayProducts from "../components/DisplayProducts"
+import DisplayProducts from "../components/products/DisplayProducts"
 
 
 export default function ProductsPage(){

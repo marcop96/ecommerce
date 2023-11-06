@@ -2,7 +2,7 @@
 export default function  Footer(){
   return (
     <footer className="bg-orange-700 text-white py-6">
-      <div className="container mx-auto flex items-center justify-between">
+      <div className="container mx-auto flex items-center justify-evenly  ">
         <div className="flex flex-col space-y-4">
           <h2 className="text-xl font-bold">Company Name</h2>
           <p>123 E-commerce Street</p>
@@ -20,12 +20,7 @@ export default function  Footer(){
             </ul>
           </div>
           <div>
-            <h3 className="text-lg font-semibold">Shop</h3>
-            <ul className="mt-2 space-y-2">
-              <a href="/">Home</a>
-              <a href='/products'>Shop</a>
-              <a href='FAQ'>FAQ</a>
-            </ul>
+ 
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
-import ProductCard from "./products/ProductCard";
-import { Product } from "../types";
+import ProductCard from "./ProductCard";
+import { Product } from "../../types";
 import {useState,useEffect} from "react";
 
 export default function DisplayProducts(){
