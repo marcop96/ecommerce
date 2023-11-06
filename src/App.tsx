@@ -20,7 +20,7 @@ export default function App() {
       <NavBar />
       <main className=" bg-orange-100 p-4">
         <Routes>
-          <Route path='/' element={<HomePage/>}/>
+          <Route path='/index' element={<HomePage/>}/>
           <Route path="/faq" element={<FAQPage/>}/>
           <Route path='/products' element={<ProductsPage/>}/>
         </Routes>
