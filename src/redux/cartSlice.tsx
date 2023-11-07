@@ -25,6 +25,7 @@ const cartSlice = createSlice({
       const quantityToRemove = Math.max(0, quantity);
     
       const updatedState = state.map((item: Product) => {
+
         if (item.id === productToRemove.id) {
           const newQuantity = item.quantity - quantityToRemove;
     

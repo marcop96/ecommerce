@@ -46,7 +46,7 @@ export default function Drawer  ()  {
       <div className={`fixed h-screen inset-0 z-50 bg-black bg-opacity-50 backdrop-blur-sm ${isOpen ? "block" : "hidden"}`}></div>
       <div ref={drawerRef} className={`fixed right-0 top-0 z-50 h-full w-full sm:w-screen g transform rounded-lg border-4 border-orange-700 bg-orange-200 transition-transform lg:w-2/4 ${isOpen ? "translate-x-0" : "translate-x-full"}`}>
         <header className="flex p-4 items-center justify-center bg-orange-600">
-          <h2 className="self-center">My cart: {cartCount}</h2>
+          <h2 className="self-center">My cart: {cartCount} items</h2>
         </header>
         <button className="absolute right-2 top-2" onClick={() => dispatch(closeDrawer())}>X</button>
         <div className="flex h-full flex-col items-center bg-orange-300 p-4">
