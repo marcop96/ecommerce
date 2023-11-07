@@ -7,7 +7,7 @@ const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action: PayloadAction<Product>) => {
       const productToAdd = action.payload;
-      const existingProduct = state.find((item) => item.id === productToAdd.id);
+      const existingProduct = state.find((item:Product) => item.id === productToAdd.id);
 
       if (existingProduct) {
         existingProduct.quantity++;
@@ -16,23 +16,32 @@ const cartSlice = createSlice({
       }
     },
 
-    removeFromCart: (state, action: PayloadAction<Product>) => {
-      const productToRemove = action.payload;
-      if (productToRemove.quantity > 1) {
-        return state.map((item) =>
-          item.id === productToRemove.id
-            ? { ...item, quantity: item.quantity - 1 }
-            : item
-        );
-      } else if (productToRemove.quantity === 1) {
-        return state.filter((item) => item.id !== productToRemove.id);
-      } else {
-        return state;
-      }
-    },
+    removeFromCart: (state, action: PayloadAction<{ product: Product, quantity: number }>) => {
+      const { product, quantity } = action.payload;
+      
+      const productToRemove = product;
+    
+      // Ensure quantity is a positive number
+      const quantityToRemove = Math.max(0, quantity);
+    
+      const updatedState = state.map((item: Product) => {
+        if (item.id === productToRemove.id) {
+          const newQuantity = item.quantity - quantityToRemove;
+    
+          if (newQuantity > 0) {
+            return { ...item, quantity: newQuantity };
+          } else {
+            // If the new quantity is 0 or negative, remove the product
+            return null;
+          }
+        }
+        return item;
+      }).filter(Boolean) as Product[];
+    
+      return updatedState;
+    }
+    ,
     calculateTotalPrice: (state,action:PayloadAction<Product>) =>{
-      //TODO calculate the total price from the products, so it can be displauyed in the cart
-
       console.log(state)
       console.log(action)
     }
