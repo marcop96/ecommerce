@@ -23,7 +23,7 @@ export default function ProductCard(props: ProductCardProps) {
 
   return (
     <>
-    <article className=" w-86 flex h-full flex-col items-center justify-between rounded-lg bg-[#fed7aa] p-2 shadow transition-transform  duration-75 hover:scale-[1.01] hover:shadow-lg">
+    <article className=" w-86 flex h-full flex-col items-center justify-between rounded-lg bg-[#fed7aa] p-2 shadow transition-transform  duration-75 hover:scale-[1.01] hover:shadow-lg card-container  ">
       <figure className="h-36  w-full ">
         <img
           className="h-full w-full object-contain "
@@ -32,7 +32,7 @@ export default function ProductCard(props: ProductCardProps) {
         />
       </figure>
       <h3 className="text-xl  ">{product.title}</h3>
-      <p className="h-20 max-w-xs  overflow-scroll text-xs">
+      <p className="h-20 max-w-xs overflow-auto text-xs ">
         {product.description}
       </p>
       <h4 color="text-secondary" className="self-center">
