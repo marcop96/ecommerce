@@ -2,7 +2,7 @@ import { Product } from "../../../types";
 import { useDispatch } from "react-redux";
 import { removeFromCart } from "../../../redux/cartSlice";
 import { decrement } from "../../../redux/cartCountSlice";
-
+import deleteIcon from '../../../assets/deleteIcon.svg'
 interface CartProps {
   item: Product;
   index: number;
@@ -32,9 +32,9 @@ function Cart({ item, index }: CartProps) {
       </div>
       <button
         onClick={() => removeFromCartHandler(item)}
-        className="border-2 border-black hover:bg-orange-600"
+        className="border-2 border-black rounded-lg hover:bg-orange-600"
       >
-        Remove 
+<img src={deleteIcon} width="20px" height="20px" />
       </button>
     </li>
   );
