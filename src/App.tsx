@@ -10,10 +10,13 @@ import FloatingCartCTA from "./components/products/Cart/FloatingCartCTA";
 import HomePage from "./pages/HomePage";
 import FAQPage from "./pages/FAQPage";
 import ProductsPage from "./pages/ProductsPage";
+import { useEffect } from "react";
 
 export default function App() {
+  const cartCount = useSelector((state: RootState) => state.cartCount);
 
-
+  useEffect(() => { console.log(cartCount) }, [cartCount])
+  
   return (
     <div className=" h-full w-full ">
       <NavBar />

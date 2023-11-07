@@ -41,6 +41,7 @@ function Cart({ item, index }: CartProps) {
           onChange={(e) => setQuantityToRemove(Number(e.target.value))}
 
         >
+          <option defaultChecked value={0}>0</option>
           {options}
 
         </select>
