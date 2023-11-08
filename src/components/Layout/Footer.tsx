@@ -7,12 +7,12 @@ export default function  Footer(){
           <h2 className="text-xl font-bold">Company Name</h2>
           <p>123 E-commerce Street</p>
           <p>City, State, 12345</p>
-          <p>Email: info@company.com</p>
+          <a href="mailto:info@company.com">Email: info@company.com</a>
         </div>
         <div className="flex space-x-6">
           <div>
             <h3 className="text-lg font-semibold">Information</h3>
-            <ul className="mt-2 space-y-2">
+            <ul className="mt-2 space-y-2 text-black">
               <li>About Us</li>
               <li>Contact Us</li>
               <li>Privacy Policy</li>
@@ -29,6 +29,4 @@ export default function  Footer(){
       </div>
     </footer>
   );
-};
-
-
+}
