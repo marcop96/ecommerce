@@ -46,7 +46,7 @@ const cartSlice = createSlice({
         return item;
       }).filter(Boolean) as Product[];
 
-      state.count--; // Decrement the cart count
+      state.count-quantityToRemove; // Decrement the cart count
       saveCartToLocalStorage(state.products, state.count);
     },
   },
