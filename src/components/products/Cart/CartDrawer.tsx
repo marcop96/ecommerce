@@ -31,7 +31,6 @@ export default function Drawer  ()  {
 //count items in cart
 useEffect(() => {
   const count = cart.products.reduce((total: number, item: Product) => total + item.quantity, 0);
-  // Do something with the count, for example, dispatch an action to update the cart count in the Redux store
 console.log(count)}, [cart.products, dispatch]);
 
 
@@ -66,8 +65,9 @@ console.log(count)}, [cart.products, dispatch]);
           )}
         <div className="flex flex-col bottom-4 min-h-2/3 w-full bg-orange-300">
           <h3 id='price' className="text-3xl p-4 self-center">
-            Total price ${calculateTotalPrice()}
-          </h3>
+                {cart.products.length > 0 ? `Total: $${calculateTotalPrice()}` : ""}
+
+</h3>
           <button className="rounded-full bg-orange-500 w-fit self-center p-3 hover:bg-orange-600"><a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ' target="_blank">  Checkout</a></button>
         </div>
         </div>
