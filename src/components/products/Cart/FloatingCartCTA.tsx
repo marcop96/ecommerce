@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { openDrawer } from "../../../redux/drawerSlice";
 import { RootState } from "../../../redux/store";
 export default function FloatingCartCTA() {
-  const cartCount = useSelector((state: RootState) => state.cartCount);
+const cartCount = useSelector((state: RootState) => state.cart.count);
   const dispatch = useDispatch();
   return (
     <div className="fixed bottom-14 right-14 z-40">
