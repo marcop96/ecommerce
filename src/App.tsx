@@ -12,9 +12,9 @@
   export default function App() {
         
     return (
-      <div className=" h-full w-full ">
+      <div className=" h-screen w-full ">
         <NavBar />
-        <main className=" bg-orange-100 p-4">
+        <main className=" bg-orange-100 p-4 ">
           <Routes>
             <Route path='/' element={<HomePage/>}/>
             <Route path="/faq" element={<FAQPage/>}/>

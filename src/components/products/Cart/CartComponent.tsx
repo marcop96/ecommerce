@@ -61,7 +61,7 @@ function Cart({ item, index }: CartProps) {
 
 <div>
         <p className="w-full px-4 ">
-          ${item.price * item.quantity}
+          ${item.price * quantityToRemove}
         </p></div>
       </div>
 
