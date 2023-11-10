@@ -28,10 +28,10 @@ export default function Drawer  ()  {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
   }, [dispatch, isOpen]);
-//count items in cart
+// count items in cart
 useEffect(() => {
-  const count = cart.products.reduce((total: number, item: Product) => total + item.quantity, 0);
-console.log(count)}, [cart.products, dispatch]);
+cart.products.reduce((total: number, item: Product) => total + item.quantity, 0);
+}, [cart.products, dispatch]);
 
 
   const calculateTotalPrice = () => {
