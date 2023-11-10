@@ -3,44 +3,42 @@ import {useDispatch, useSelector} from 'react-redux'
 import { closeDrawer } from "../../../redux/drawerSlice";
 import { RootState } from "../../../redux/store";
 import CartComponent from "./CartComponent";
-
+import { Product } from "../../../types";
 export default function Drawer  ()  {
   const cartCount = useSelector((state: RootState) => state.cartCount);
   const cartItems = useSelector((state: RootState) => state.cart);
   const dispatch = useDispatch();
   const isOpen = useSelector((state: RootState) => state.drawer.isOpen);
+
   const EMPTY_CART_TEXT = {
     title: "Your Cart is empty",
     message: "Perhaps you should buy something :)",
   };
   const drawerRef = useRef<HTMLDivElement>(null); 
-
-
   //checks if click was made outside of the drawer, and closes it
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent) => {
       //drawer ref = open  drawer div
       if (drawerRef.current && !drawerRef.current.contains(e.target as Node)) {
-
         dispatch(closeDrawer());
       }
     };
-
     document.addEventListener("mousedown", handleOutsideClick);
-
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
   }, [dispatch, isOpen]);
+//count items in cart
+useEffect(() => {
+  const count = cartItems.reduce((total: number, item: Product) => total + item.quantity, 0);
+  // Do something with the count, for example, dispatch an action to update the cart count in the Redux store
+console.log(count)}, [cartItems, dispatch]);
 
-    // Function to calculate total price
-    const calculateTotalPrice = () => {
-      const totalPrice = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+
+  const calculateTotalPrice = () => {
+      const totalPrice = cartItems.reduce((total:number, item:Product) => total + (item.price * item.quantity), 0);
       return totalPrice.toFixed(2)
     };
-  
-
-      
   return (
     <>
       <div className={`fixed h-screen inset-0 z-50 bg-black bg-opacity-50 backdrop-blur-sm ${isOpen ? "block" : "hidden"}`}></div>
@@ -50,7 +48,7 @@ export default function Drawer  ()  {
         </header>
         <button className="absolute right-2 top-2" onClick={() => dispatch(closeDrawer())}>X</button>
         <div className="flex h-full flex-col items-center bg-orange-300 p-4">
-          {cartCount === 0 ? (
+          {cartItems.length === 0 ? (
             <>
               <h2 className="text-2xl">{EMPTY_CART_TEXT.title}</h2>
               <span>{EMPTY_CART_TEXT.message}</span>
@@ -58,9 +56,12 @@ export default function Drawer  ()  {
           ) : (
             <div className="w-full items-center bg-orange-300 overflow-auto">
             <ul >
-              {cartItems.map((item, index) => (
+              {cartItems.map((item:Product, index:number) => (
                 <CartComponent key={index} item={item} index={index} />
-              ))}
+
+              )) 
+              }
+            
             </ul></div>
           )}
         <div className="flex flex-col bottom-4 min-h-2/3 w-full bg-orange-300">

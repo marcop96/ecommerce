@@ -15,7 +15,7 @@ export default function ProductCard(props: ProductCardProps) {
   const dispatch = useDispatch();
 
   function addToCartHandler(product: Product) {
-
+console.log('addtocarthandler ')
     dispatch(addToCart(product));
     dispatch(increment());
     setShowModal(true)

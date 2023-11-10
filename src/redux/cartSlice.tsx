@@ -1,53 +1,61 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Product } from "../types";
 
+function saveCartToLocalStorage(cart: Product[]) {
+  try {
+    const serializedCart = JSON.stringify(cart);
+    localStorage.setItem("cart", serializedCart);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export function loadCartFromLocalStorage ()  {
+  const cart = localStorage.getItem("cart");
+  if (cart) {
+    return JSON.parse(cart) as Product[];
+  }
+  return [];
+}
+
 const cartSlice = createSlice({
   name: "cart",
-  initialState: [] as Product[],
+  initialState: loadCartFromLocalStorage(),
   reducers: {
     addToCart: (state, action: PayloadAction<Product>) => {
       const productToAdd = action.payload;
-      const existingProduct = state.find((item:Product) => item.id === productToAdd.id);
+      const existingProduct = state.find((item: Product) => item.id === productToAdd.id);
 
       if (existingProduct) {
         existingProduct.quantity++;
       } else {
-        return [...state, { ...productToAdd, quantity: 1 }];
+        state.push({ ...productToAdd, quantity: 1 });
       }
+      saveCartToLocalStorage(state);
     },
-
     removeFromCart: (state, action: PayloadAction<{ product: Product, quantity: number }>) => {
       const { product, quantity } = action.payload;
-      
       const productToRemove = product;
-    
-      // Ensure quantity is a positive number
       const quantityToRemove = Math.max(0, quantity);
-    
-      const updatedState = state.map((item: Product) => {
 
+      const updatedState = state.map((item: Product) => {
         if (item.id === productToRemove.id) {
           const newQuantity = item.quantity - quantityToRemove;
-    
           if (newQuantity > 0) {
             return { ...item, quantity: newQuantity };
           } else {
-            // If the new quantity is 0 or negative, remove the product
             return null;
           }
         }
         return item;
       }).filter(Boolean) as Product[];
-    
+
+      saveCartToLocalStorage(updatedState);
       return updatedState;
-    }
-    ,
-    calculateTotalPrice: (state,action:PayloadAction<Product>) =>{
-      console.log(state)
-      console.log(action)
-    }
+    },
+    
   },
 });
 
-export const { addToCart, removeFromCart,calculateTotalPrice } = cartSlice.actions;
+export const { addToCart, removeFromCart } = cartSlice.actions;
 export default cartSlice.reducer;

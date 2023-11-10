@@ -13,7 +13,6 @@ interface CartProps {
 function Cart({ item, index }: CartProps) {
   const [quantityToRemove, setQuantityToRemove] = useState(0);
   const dispatch = useDispatch();
-
   const removeFromCartHandler = (product: Product, quantity: number) => {
     dispatch(removeFromCart({ product, quantity }));
     dispatch(decrement(quantity));

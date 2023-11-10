@@ -2,8 +2,6 @@
   import { RootState } from "./redux/store";
   import Footer from "./components/Layout/Footer";
   import NavBar from "./components/Layout/NavBar";
-  // import ProductCard from "./components/products/ProductCard";
-  // import { Product } from "./types";
   import CartDrawer from "./components/products/Cart/CartDrawer";
   import FloatingCartCTA from "./components/products/Cart/FloatingCartCTA";
   import { Route, Routes } from "react-router-dom";
@@ -12,7 +10,7 @@
   import ProductsPage from "./pages/ProductsPage";
 
   export default function App() {
-    
+        
     return (
       <div className=" h-full w-full ">
         <NavBar />

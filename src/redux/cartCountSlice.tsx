@@ -6,9 +6,9 @@ const cartCountSlice = createSlice({
   reducers: {
     increment: (state) => state + 1,
     decrement: (state,action) => state - action.payload,
-    reset: () => 0,
+
   },
 });
 
-export const { increment, decrement, reset } = cartCountSlice.actions;
+export const { increment, decrement } = cartCountSlice.actions;
 export default cartCountSlice.reducer;
