@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "nuxt-ecommerce",
   "private": true,
   "type": "module",
   "scripts": {
@@ -10,9 +10,35 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "nuxt": "^3.16.0",
-    "vue": "^3.5.13",
-    "vue-router": "^4.5.0"
+    "nuxt": "^3.17.5",
+    "vue": "^3.5.16",
+    "vue-router": "^4.5.1",
+    "@nuxtjs/tailwindcss": "^6.11.4",
+    "@pinia/nuxt": "^0.5.1",
+    "@stripe/stripe-js": "^2.4.0",
+    "@vueuse/core": "^10.7.2",
+    "pinia": "^2.1.7",
+    "stripe": "^14.14.0",
+    "zod": "^3.22.4",
+    "@prisma/client": "^5.10.0",
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^2.0.1",
+    "@nuxtjs/supabase": "^1.1.4",
+    "vue-toastification": "^2.0.0-rc.5",
+    "@vueuse/nuxt": "^10.7.2",
+    "vee-validate": "^4.12.0",
+    "@headlessui/vue": "^1.7.19"
+  },
+  "devDependencies": {
+    "@nuxtjs/color-mode": "^3.3.2",
+    "@nuxtjs/i18n": "^8.1.1",
+    "@types/node": "^20.11.19",
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.3.3",
+    "prisma": "^5.10.0",
+    "@types/bcryptjs": "^2.4.6"
   },
   "packageManager": "pnpm@9.15.2+sha512.93e57b0126f0df74ce6bff29680394c0ba54ec47246b9cf321f0121d8d9bb03f750a705f24edc3c1180853afd7c2c3b94196d0a3d53d3e069d9e2793ef11f321"
 }
