@@ -43,7 +43,7 @@
                             </NuxtLink>
                         </li>
                         <li>
-                            <NuxtLink to="/categories"
+                            <NuxtLink to="/catalog/categories"
                                 class="text-neutral-600 hover:text-primary-600 transition-colors duration-200">
                                 Categories
                             </NuxtLink>

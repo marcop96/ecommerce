@@ -4,7 +4,7 @@ const isMenuOpen = ref(false)
 const navItems = [
     { name: 'Home', href: '/' },
     { name: 'Shop', href: '/catalog' },
-    { name: 'Categories', href: '/categories' },
+    { name: 'Categories', href: '/catalog/categories' },
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },
 ]

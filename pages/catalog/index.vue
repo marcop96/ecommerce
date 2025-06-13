@@ -1,9 +1,9 @@
 <script setup lang="ts">
-console.log("Cart");
+const route = useRoute()
 </script>
 
 <template> 
     <div>
-        <h1>Cart</h1>
+        <h1>{{route.path}}</h1>
     </div>
 </template>

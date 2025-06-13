@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { useCartStore } from '~/stores/cart'
+import { useSupabase } from '~/composables/useSupabase'
+
+const supabase = useSupabase()
 
 const cart = useCartStore()
 
@@ -33,6 +36,11 @@ const featuredProducts = [
         category: 'Category 3'
     }
 ]
+
+// const { data, error } = await supabase.from('products').select('*')
+// console.log('Data:', data)
+// console.log('Error:', error)
+
 </script>
 
 <template>
@@ -80,7 +88,7 @@ const featuredProducts = [
                                         d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                 </svg>
                             </NuxtLink>
-                            <NuxtLink to="/categories"
+                            <NuxtLink to="/catalog/categories"
                                 class="group inline-flex items-center justify-center px-8 py-4 font-semibold text-neutral-900 transition-all duration-200 bg-white border-2 border-neutral-900 rounded-lg hover:bg-neutral-900 hover:text-white hover:shadow-lg hover:-translate-y-0.5">
                                 Browse Categories
                             </NuxtLink>
@@ -106,6 +114,7 @@ const featuredProducts = [
                         class="inline-block px-4 py-2 bg-primary-100 text-primary-600 rounded-full text-sm font-semibold mb-4">
                         Featured Collection
                     </span>
+                    <button @click="console.log(data)">test</button>
                     <h2 class="text-3xl font-bold text-neutral-900 mb-4">Featured Products</h2>
                     <p class="text-neutral-600 max-w-2xl mx-auto">
                         Discover our handpicked selection of premium products, chosen for their quality and style.
