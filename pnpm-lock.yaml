@@ -26,6 +26,9 @@ importers:
       '@stripe/stripe-js':
         specifier: ^2.4.0
         version: 2.4.0
+      '@supabase/supabase-js':
+        specifier: ^2.50.0
+        version: 2.50.0
       '@vueuse/core':
         specifier: ^10.7.2
         version: 10.11.1(vue@3.5.16(typescript@5.8.3))
