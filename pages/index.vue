@@ -37,10 +37,7 @@ const featuredProducts = [
     }
 ]
 
-// const { data, error } = await supabase.from('products').select('*')
-// console.log('Data:', data)
-// console.log('Error:', error)
-
+const { data,error } = await useFetch('/api/products')
 </script>
 
 <template>
@@ -114,7 +111,7 @@ const featuredProducts = [
                         class="inline-block px-4 py-2 bg-primary-100 text-primary-600 rounded-full text-sm font-semibold mb-4">
                         Featured Collection
                     </span>
-                    <button @click="console.log(data)">test</button>
+                    <button @click="console.log(error)">test</button>
                     <h2 class="text-3xl font-bold text-neutral-900 mb-4">Featured Products</h2>
                     <p class="text-neutral-600 max-w-2xl mx-auto">
                         Discover our handpicked selection of premium products, chosen for their quality and style.
