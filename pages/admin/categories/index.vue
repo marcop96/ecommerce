@@ -1,63 +1,54 @@
 <script setup lang="ts">
+import type { Category } from '~/types/'
+
 definePageMeta({
     layout: 'admin'
 })
 
-// Mock data - replace with actual data from your backend
-const categories = ref([
-    {
-        id: 1,
-        name: 'Category 1',
-        slug: 'category-1',
-        description: 'Description for category 1',
-        productCount: 45,
-        status: 'Active'
-    },
-    {
-        id: 2,
-        name: 'Category 2',
-        slug: 'category-2',
-        description: 'Description for category 2',
-        productCount: 32,
-        status: 'Active'
-    },
-    {
-        id: 3,
-        name: 'Category 3',
-        slug: 'category-3',
-        description: 'Description for category 3',
-        productCount: 18,
-        status: 'Inactive'
-    }
-])
-
 const searchQuery = ref('')
 const selectedStatus = ref('all')
+const isDeleteModalOpen = ref(false)
+const categoryToDelete = ref<Category | null>(null)
+
+// Fetch categories
+const { data: categoriesData, error: categoriesError, refresh: refreshCategories } = await useFetch<{ categories: Category[] }>('/api/categories/categories')
+const categories = ref<Category[]>(categoriesData.value?.categories || [])
 
 const filteredCategories = computed(() => {
     return categories.value.filter(category => {
         const matchesSearch = category.name.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
-            category.description.toLowerCase().includes(searchQuery.value.toLowerCase())
-        const matchesStatus = selectedStatus.value === 'all' || category.status === selectedStatus.value
-        return matchesSearch && matchesStatus
+            category.description?.toLowerCase().includes(searchQuery.value.toLowerCase())
+        return matchesSearch
     })
 })
 
 const statuses = ['Active', 'Inactive']
 
-const isDeleteModalOpen = ref(false)
-const categoryToDelete = ref(null)
-
-const openDeleteModal = (category) => {
+const openDeleteModal = (category: Category) => {
     categoryToDelete.value = category
     isDeleteModalOpen.value = true
 }
 
-const deleteCategory = () => {
-    // Implement delete logic here
-    categories.value = categories.value.filter(c => c.id !== categoryToDelete.value.id)
-    isDeleteModalOpen.value = false
-    categoryToDelete.value = null
+const deleteCategory = async () => {
+    if (!categoryToDelete.value) return
+
+    try {
+        const { error } = await useFetch(`/api/categories/${categoryToDelete.value.id}`, {
+            method: 'DELETE'
+        })
+
+        if (error.value) {
+            throw new Error(error.value.message)
+        }
+
+        // Refresh the categories list
+        await refreshCategories()
+        isDeleteModalOpen.value = false
+        categoryToDelete.value = null
+    } catch (error: any) {
+        console.error('Error deleting category:', error)
+        // You might want to show an error message to the user here
+    }
 }
 </script>
 
@@ -78,34 +69,50 @@ const deleteCategory = () => {
             </NuxtLink>
         </div>
 
-        <!-- Filters -->
-        <div class="bg-white rounded-lg shadow-sm border border-neutral-200 p-4">
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <!-- Search -->
-                <div>
-                    <label for="search" class="block text-sm font-medium text-neutral-700">Search</label>
-                    <input type="text" id="search" v-model="searchQuery"
-                        class="mt-1 block w-full rounded-md border-neutral-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
-                        placeholder="Search categories..." />
+        <!-- Error State -->
+        <div v-if="categoriesError" class="rounded-md bg-red-50 p-4">
+            <div class="flex">
+                <div class="flex-shrink-0">
+                    <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                            clip-rule="evenodd" />
+                    </svg>
                 </div>
-
-                <!-- Status Filter -->
-                <div>
-                    <label for="status" class="block text-sm font-medium text-neutral-700">Status</label>
-                    <select id="status" v-model="selectedStatus"
-                        class="mt-1 block w-full rounded-md border-neutral-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm">
-                        <option value="all">All Statuses</option>
-                        <option v-for="status in statuses" :key="status" :value="status">
-                            {{ status }}
-                        </option>
-                    </select>
+                <div class="ml-3">
+                    <p class="text-sm text-red-700">Failed to load categories. Please try again.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Categories Table -->
-        <div class="bg-white rounded-lg shadow-sm border border-neutral-200 overflow-hidden">
-            <div class="overflow-x-auto">
+        <!-- Loading State -->
+        <div v-else-if="!categories" class="flex justify-center items-center py-12">
+            <svg class="animate-spin h-8 w-8 text-primary-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                </path>
+            </svg>
+        </div>
+
+        <!-- Content -->
+        <template v-else>
+            <!-- Filters -->
+            <div class="bg-white rounded-lg shadow-sm border border-neutral-200 p-4">
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <!-- Search -->
+                    <div>
+                        <label for="search" class="block text-sm font-medium text-neutral-700">Search</label>
+                        <input type="text" id="search" v-model="searchQuery"
+                            class="mt-1 block w-full rounded-md border-neutral-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
+                            placeholder="Search categories..." />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories Table -->
+            <div class="bg-white rounded-lg shadow-sm border border-neutral-200 overflow-hidden">
                 <table class="min-w-full divide-y divide-neutral-200">
                     <thead class="bg-neutral-50">
                         <tr>
@@ -165,7 +172,7 @@ const deleteCategory = () => {
                     </tbody>
                 </table>
             </div>
-        </div>
+        </template>
 
         <!-- Delete Modal -->
         <div v-if="isDeleteModalOpen" class="fixed inset-0 z-50 overflow-y-auto">
