@@ -33,10 +33,13 @@ export interface Category {
     name: string
     slug: string
     description: string
-    created_at: string
-    updated_at: string
+    status: string
+    parentId: string | null
+    seo_title?: string
+    seo_description?: string
+    seo_keywords?: string
+    image?: string
 }
-
 export interface Customer {
     id: string
 }
