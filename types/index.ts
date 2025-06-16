@@ -38,7 +38,7 @@ export interface Category {
     seo_title?: string
     seo_description?: string
     seo_keywords?: string
-    image?: string
+    image?: string[]
 }
 export interface Customer {
     id: string
